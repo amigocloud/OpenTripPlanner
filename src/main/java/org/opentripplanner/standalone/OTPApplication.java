@@ -13,6 +13,8 @@ import org.opentripplanner.api.common.OTPExceptionMapper;
 import org.opentripplanner.api.model.JSONObjectMapperProvider;
 import org.opentripplanner.api.resource.*;
 import org.opentripplanner.index.GeocoderResource;
+import org.opentripplanner.index.BingGeocoderResource;
+import org.opentripplanner.index.GoogleGeocoderResource;
 import org.opentripplanner.index.IndexAPI;
 import org.slf4j.bridge.SLF4JBridgeHandler;
 
@@ -73,6 +75,8 @@ public class OTPApplication extends Application {
             IndexAPI.class,
             ExternalGeocoderResource.class,
             GeocoderResource.class,
+            GoogleGeocoderResource.class,
+            BingGeocoderResource.class,
             SimpleIsochrone.class,
             TileService.class,
             BikeRental.class,
