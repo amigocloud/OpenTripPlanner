@@ -39,14 +39,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vividsolutions.jts.geom.Envelope;
 
 /**
- * A geocoder using the data.gouv.fr API of BANO (Base Nationale d'Adresse Ouverte), the official
- * open-data address source covering the whole of France.
  *
- * The returned data is rather simple to use, as it returns a GeoJSON features collection.
- * 
- * Obviously, this geocoder will only work in France.
- *
- * @author laurent
  */
 public class BingGeocoder implements Geocoder {
 
