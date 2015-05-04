@@ -36,8 +36,10 @@ public class BingGeocoderResource {
      * @return list of results in in the format expected by GeocoderBuiltin.js in the OTP Leaflet client
      */
     @GET
-    public Response textSearch (@QueryParam("address") String query
+    public Response textSearch (@QueryParam("address") String query,
+				@QueryParam("key") @DefaultValue("") String key
                                 ) {
+        geocoder.setKey(key);
         return Response.status(Response.Status.OK).entity(geocoder.geocode(query, null)).build();
     }
 

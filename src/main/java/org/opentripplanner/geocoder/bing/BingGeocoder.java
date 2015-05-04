@@ -51,14 +51,19 @@ import com.vividsolutions.jts.geom.Envelope;
 public class BingGeocoder implements Geocoder {
 
     private static final String BING_URL = "http://dev.virtualearth.net/REST/v1/Locations";
-    private static final String BING_KEY = "Aj6WEk1fJi4JZSJ2_OpzW6dD9Ivw13hSwtoM5Tjjw7f8YojnQ6Iw4ZZWcmyZyPdn";
     
     private ObjectMapper mapper;
     private GoogleJsonDeserializer googleJsonDeserializer = new GoogleJsonDeserializer();
 
+    private String key="";
+
     public BingGeocoder() {
         mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     /**
@@ -70,7 +75,7 @@ public class BingGeocoder implements Geocoder {
         List<GeocoderResult> geocoderResults = new ArrayList<GeocoderResult>();
 	
 	try {
-	    URL url = getBingGeocoderUrl(address, bbox);
+	    URL url = getBingGeocoderUrl(address, key);
             URLConnection conn = url.openConnection();
             BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
             
@@ -107,14 +112,10 @@ public class BingGeocoder implements Geocoder {
 	}
     }
 
-    private URL getBingGeocoderUrl(String address, Envelope bbox) throws IOException {
+    private URL getBingGeocoderUrl(String address, String key) throws IOException {
         UriBuilder uriBuilder = UriBuilder.fromUri(BING_URL);
         uriBuilder.queryParam("query", address);
-        uriBuilder.queryParam("key", BING_KEY);
-        if (bbox != null) {
-            uriBuilder.queryParam("lat", bbox.centre().y);
-            uriBuilder.queryParam("lon", bbox.centre().x);
-        }
+        uriBuilder.queryParam("key", key);
         URI uri = uriBuilder.build();
         return new URL(uri.toString());
     }
