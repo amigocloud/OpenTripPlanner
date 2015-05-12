@@ -75,7 +75,7 @@ public class OTPApplication extends Application {
             IndexAPI.class,
             ExternalGeocoderResource.class,
             GeocoderResource.class,
-            GoogleGeocoderResource.class,
+  //          GoogleGeocoderResource.class,
             BingGeocoderResource.class,
             SimpleIsochrone.class,
             TileService.class,
