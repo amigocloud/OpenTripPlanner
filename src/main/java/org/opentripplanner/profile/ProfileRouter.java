@@ -55,10 +55,10 @@ public class ProfileRouter {
     private static final Logger LOG = LoggerFactory.getLogger(ProfileRouter.class);
 
     /* Search configuration constants */
-    public static final int SLACK = 60; // in seconds, time required to catch a transit vehicle
+    public static final int SLACK = 90; // in seconds, time required to catch a transit vehicle
     private static final int TIMEOUT = 30; // in seconds, maximum computation time
-    public static final int MAX_DURATION = 90 * 60; // in seconds, the longest we want to travel
-    private static final int MAX_RIDES = 10; // maximum number of boardings in a trip
+    public static final int MAX_DURATION = 240 * 60; // in seconds, the longest we want to travel
+    private static final int MAX_RIDES = 25; // maximum number of boardings in a trip
 
     public final Graph graph;
     public final ProfileRequest request;
